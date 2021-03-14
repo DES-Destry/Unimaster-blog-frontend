@@ -1,0 +1,8 @@
+@import './colors.scss';
+
+.header {
+  border-bottom: $white solid 1px;
+  position: sticky;
+  top: 0px;
+  z-index: 999;
+}

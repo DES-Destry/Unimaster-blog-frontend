@@ -33,20 +33,12 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+  @import '../assets/styles/base_btn.scss';
+
   .info_card {
     width: 15rem;
     height: 27rem;
     margin: 10px;
-  }
-
-  .btn-warning, .btn-warning:active, .btn-warning:visited {
-    background-color: #DC821E !important;
-    color: #FFFFFF !important;
-  }
-
-  .btn-warning:hover {
-    background-color: #FFC107 !important;
-    color: #000000 !important;
   }
 </style>

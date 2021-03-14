@@ -28,16 +28,8 @@ export default {
 };
 </script>
 
-<style scoped>
-  .header {
-    border: #FFFFFF solid 1px;
-    border-top-width: 0;
-    border-right-width: 0;
-    border-left-width: 0;
-    position: sticky;
-    top: 0px;
-    z-index: 999;
-  }
+<style lang="scss" scoped>
+  @import '../assets/styles/header.scss';
 
   .devs {
     margin-top: 20px;

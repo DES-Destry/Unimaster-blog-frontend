@@ -28,14 +28,14 @@
           <b-button-group>
             <a v-for="link in devInfo.links" :key="link.type" :href="link.link">
               <b-button id="contact" type="button" class="btn btn-warning">
-                <!--<b-icon :icon="link.type.toLowerCase()"></b-icon>-->{{link.type}}
+                <b-icon :icon="link.type.toLowerCase()"></b-icon>{{link.type}}
               </b-button>
             </a>
           </b-button-group>
         </div>
         <div class="other_devs">
           <h1>Other Developers</h1>
-          <DevelopersList v-bind:devs="devs"/>
+          <DevelopersList :devs="devs"/>
         </div>
       </div>
     </div>
@@ -80,16 +80,9 @@ export default {
 };
 </script>
 
-<style scoped>
-  .header {
-    border: #FFFFFF solid 1px;
-    border-top-width: 0;
-    border-right-width: 0;
-    border-left-width: 0;
-    position: sticky;
-    top: 0px;
-    z-index: 999;
-  }
+<style lang="scss" scoped>
+  @import '../assets/styles/base_btn.scss';
+  @import '../assets/styles/header.scss';
 
   #info {
     margin-top: 20px;
@@ -106,15 +99,5 @@ export default {
 
   #contact {
     margin: 5px;
-  }
-
-  .btn-warning, .btn-warning:active, .btn-warning:visited {
-    background-color: #DC821E !important;
-    color: #FFFFFF !important;
-  }
-
-  .btn-warning:hover {
-    background-color: #FFC107 !important;
-    color: #000000 !important;
   }
 </style>

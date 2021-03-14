@@ -1,0 +1,11 @@
+@import './colors.scss';
+
+.btn-warning, .btn-warning:active, .btn-warning:visited {
+  background-color: $main !important;
+  color: $white !important;
+}
+
+.btn-warning:hover {
+  background-color: $wrn_pressed !important;
+  color: $black !important;
+}

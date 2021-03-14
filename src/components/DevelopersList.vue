@@ -1,8 +1,8 @@
 <template>
 <div class="container">
     <b-container>
-      <b-row align-v="center">
-        <DeveloperBlock v-for="dev in devs" :key="dev" v-bind:dev="dev"/>
+      <b-row align-v="center" align-h="center">
+        <DeveloperBlock v-for="dev in devs" :key="dev" :dev="dev"/>
       </b-row>
     </b-container>
 </div>
