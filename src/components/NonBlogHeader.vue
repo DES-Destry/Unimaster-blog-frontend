@@ -1,6 +1,5 @@
 <template>
   <header>
-    <!-- native bg: #DC821E -->
     <div class="hdiv">
       <router-link to="/" class="main">
         <p>Unimaster Blog</p>
@@ -25,11 +24,13 @@
   </header>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
+  @import '../assets/styles/colors.scss';
+
   header {
     height: 65px;
     width: 100%!important;
-    background:#DC821E;
+    background: $main;
   }
 
   .hdiv {
@@ -40,7 +41,7 @@
 
   .main {
     text-decoration: none;
-    color: #FFFFFF;
+    color: $white;
     font-size: 27px;
     margin-top: 10px;
   }
@@ -48,7 +49,7 @@
   .source_code {
     display: flex;
     align-items: baseline;
-    color: #FFFFFF;
+    color: $white;
     font-size: 17px;
   }
 
