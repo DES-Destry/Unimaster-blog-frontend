@@ -1,0 +1,6 @@
+{
+  "name": "Not_Found :(",
+  "role": "Error indicator",
+  "route": "not_found",
+  "description": "Sometimes we really want to find something that doesn't really exist..."
+}

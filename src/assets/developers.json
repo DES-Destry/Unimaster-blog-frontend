@@ -1,0 +1,30 @@
+[
+    {
+        "name": "Andrey Kirik",
+        "role": "Backend | Shitty frontend | Blog creator",
+        "route": "destry",
+        "links": [
+            {
+                "type": "GitHub",
+                "link": "https://github.com/DES-Destry"
+            },
+            {
+                "type": "LinkedIn",
+                "link": "https://www.linkedin.com/in/andrey-agafonov-dev/"
+            },
+            {
+                "type": "VK",
+                "link": "https://vk.com/vk.peoples.kirik"
+            },
+            {
+                "type": "Email",
+                "link": "mailto:agafonovandrej69@gmail.com"
+            },
+            {
+                "type": "Unimaster Blog",
+                "link": "/blog/Destry.Unimaster"
+            }
+        ],
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+    }
+]
