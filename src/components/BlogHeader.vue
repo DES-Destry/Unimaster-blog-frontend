@@ -15,11 +15,11 @@
       </div>
       <div class="account">
         <div v-if="!username">
-          <router-link to="/signin"> <!-- Войти -->
-            <button id="btn_account" class="btn btn btn-outline-light">Sign In</button>
+          <router-link to="/signin">
+            <button id="btn_account" class="btn btn-outline-light">Sign In</button>
           </router-link>
           <router-link to="/signup">
-            <button id="btn_account" class="btn btn btn-outline-light">Sign Up</button>
+            <button id="btn_account" class="btn btn-outline-light">Sign Up</button>
           </router-link>
         </div>
         <div v-else>
@@ -106,6 +106,7 @@ export default {
       color: $link_hover;
     }
     .router-link-active {
+      font-weight: bolder;
       color: $link_active;
     }
   }
