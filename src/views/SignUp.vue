@@ -73,6 +73,7 @@ export default {
           if (response.status === 200 || response.status === 201) {
             localStorage.setItem('token', response.data.content.token);
             localStorage.setItem('username', response.data.content.username);
+            localStorage.setItem('verified', false);
 
             if (response.status === 200) {
               localStorage.setItem('repeatVerificateRequired', false);

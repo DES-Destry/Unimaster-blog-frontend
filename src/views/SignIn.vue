@@ -12,7 +12,7 @@
         </div>
         <label for="password">Password</label>
         <div class="input-group mb-3">
-          <input type="password" id="password" class="form-control" aria-label="Recipient's username" aria-describedby="basic-addon2">
+          <input type="password" id="password" class="form-control" aria-label="Recipient's username" aria-describedby="basic-addon2" v-model="password">
           <div class="input-group-append">
             <router-link to="/restore-password">
               <button class="btn btn-outline-light" type="button">Forgot password?</button>
@@ -20,6 +20,7 @@
           </div>
         </div>
         <button class="btn btn-outline-light" @click="signIn">Sign in</button>
+        <div class="error">{{errorText}}</div>
       </div>
     </div>
     <div class="signup">
@@ -30,15 +31,42 @@
 </template>
 
 <script>
+import axios from 'axios';
+import { backendUrl } from '@/assets/config.json';
+
 export default {
   data() {
     return {
       login: '',
       password: '',
+      errorText: '',
     };
   },
   methods: {
     signIn() {
+      const userData = {
+        login: this.login,
+        password: this.password,
+      };
+
+      axios.post(`${backendUrl}/api/auth/login`, userData)
+        .then((response) => {
+          if (response.status === 200) {
+            localStorage.setItem('token', response.data.content.token);
+            localStorage.setItem('username', response.data.content.username);
+            localStorage.setItem('verified', response.data.content.verified);
+            this.$router.push('/blog/main');
+          }
+        })
+        .catch((err) => {
+          if (err.response.status === 401) {
+            this.errorText = 'Login or password not correct!';
+          } else if (err.response.status === 500) {
+            this.errorText = 'Internal server error! Try again later...';
+          } else {
+            this.errorText = 'Unknown error...';
+          }
+        });
     },
   },
 };
@@ -83,6 +111,9 @@ export default {
     }
     .input-group {
       width: 27rem;
+    }
+    .error {
+      color: $wrong_input;
     }
   }
 

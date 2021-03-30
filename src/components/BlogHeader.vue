@@ -53,6 +53,7 @@ export default {
       localStorage.removeItem('username');
       localStorage.removeItem('token');
       localStorage.removeItem('repeatVerificateRequired');
+      localStorage.removeItem('verified');
       this.username = null;
       this.token = null;
     },
