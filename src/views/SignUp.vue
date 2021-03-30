@@ -70,10 +70,17 @@ export default {
 
       axios.post(`${backendUrl}/api/auth/registrate`, userData)
         .then((response) => {
-          if (response.status === 200) {
-            localStorage.setItem('token', response.data.content.jwt);
+          if (response.status === 200 || response.status === 201) {
+            localStorage.setItem('token', response.data.content.token);
             localStorage.setItem('username', response.data.content.username);
-            this.$router.push('/blog/main');
+
+            if (response.status === 200) {
+              localStorage.setItem('repeatVerificateRequired', false);
+              this.$router.push('/blog/main');
+            } else if (response.status === 201) {
+              localStorage.setItem('repeatVerificateRequired', true);
+              this.$router.push(`/user/${response.data.content.username}`);
+            }
           }
         })
         .catch((err) => {

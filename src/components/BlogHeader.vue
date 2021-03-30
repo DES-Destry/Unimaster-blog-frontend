@@ -52,6 +52,7 @@ export default {
     signout() {
       localStorage.removeItem('username');
       localStorage.removeItem('token');
+      localStorage.removeItem('repeatVerificateRequired');
       this.username = null;
       this.token = null;
     },
