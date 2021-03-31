@@ -14,6 +14,7 @@
         </nav>
       </div>
       <div class="account">
+        <div v-if="notifications > 0" class="notification"></div>
         <div v-if="!username">
           <router-link to="/signin">
             <button id="btn_account" class="btn btn-outline-light">Sign In</button>
@@ -42,11 +43,19 @@ export default {
     return {
       username: null,
       token: null,
+      userVerified: false,
+      repeatVerificateRequest: false,
+      notifications: 0,
     };
   },
   mounted() {
     this.username = localStorage.getItem('username');
     this.token = localStorage.getItem('token');
+    this.userVerified = !localStorage.getItem('verified') || false;
+    this.repeatVerificateRequest = localStorage.getItem('repeatVerificateRequired') || false;
+    if (!this.userVerified || this.repeatVerificateRequest) {
+      this.notifications += 1;
+    }
   },
   methods: {
     signout() {
@@ -56,6 +65,7 @@ export default {
       localStorage.removeItem('verified');
       this.username = null;
       this.token = null;
+      this.notifications = 0;
     },
   },
 };
@@ -85,6 +95,13 @@ export default {
       align-items: center;
       height: 65px;
       margin-right: 5px;
+      .notification {
+        height: 10px;
+        width: 10px;
+        background: $white;
+        border-radius: 10px;
+        margin-right: 5px;
+      }
       #btn_account {
         margin: 8px;
       }
