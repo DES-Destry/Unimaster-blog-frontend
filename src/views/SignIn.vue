@@ -14,7 +14,7 @@
         <div class="input-group mb-3">
           <input type="password" id="password" class="form-control" aria-label="Recipient's username" aria-describedby="basic-addon2" v-model="password">
           <div class="input-group-append">
-            <router-link to="/restore-password">
+            <router-link to="/restore-password/step1">
               <button class="btn btn-outline-light" type="button">Forgot password?</button>
             </router-link>
           </div>

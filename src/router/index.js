@@ -21,6 +21,21 @@ const routes = [
     component: () => import('@/views/SignUp.vue'),
   },
   {
+    path: '/restore-password/step1',
+    name: 'Restore password(step 1)',
+    component: () => import('@/views/RestorePassword.vue'),
+  },
+  {
+    path: '/restore-password/step2',
+    name: 'Restore password(step 2)',
+    component: () => import('@/views/RestorePasswordStep2.vue'),
+  },
+  {
+    path: '/restore-password/step3',
+    name: 'Restore password(step 3)',
+    component: () => import('@/views/RestorePasswordStep3.vue'),
+  },
+  {
     path: '/blog/main',
     name: 'Main Blog',
     component: () => import('@/views/MainBlogPage.vue'),
