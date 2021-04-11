@@ -58,12 +58,12 @@ export default {
         .catch((err) => {
           if (err.response.status === 400) {
             this.errorText = 'User with this login not found!';
-            this.login = '';
+            this.errorOccured();
             return;
           }
           if (err.response.status === 500) {
             this.errorText = 'Internal server error :( Try again later.';
-            this.login = '';
+            this.errorOccured();
             return;
           }
 
@@ -76,6 +76,10 @@ export default {
     },
     typeLogin() {
       this.nextAvailable = this.login.trim() !== '';
+    },
+    errorOccured() {
+      this.login = '';
+      this.typeLogin();
     },
   },
 };

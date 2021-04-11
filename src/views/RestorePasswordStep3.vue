@@ -22,6 +22,7 @@
         <button class="btn btn-danger" @click="cancel">Cancel</button>
         <button class="btn btn-success" @click="next" :disabled="!passwordAvailable">Restore password!</button>
       </div>
+      <div class="error">{{errorText}}</div>
   </div>
 </template>
 
@@ -46,9 +47,12 @@ export default {
   components: { ProgressBar },
   methods: {
     next() {
+      if (!this.passwordAvailable) return;
+
       const data = {
         login: this.$store.state.restorePassword.step1.login,
-        code: this.code,
+        code: this.$store.state.restorePassword.step2.code,
+        newPassword: this.password,
       };
       axios.put(`${backendUrl}/api/user/password/restore`, data)
         .then((response) => {
@@ -61,14 +65,19 @@ export default {
           this.errorText = 'All good, but something went wrong...';
         })
         .catch((err) => {
+          if (err.response.status === 400) {
+            this.errorText = 'Password must be not less than 8 symbols!';
+            this.errorOccured();
+            return;
+          }
           if (err.response.status === 403) {
             this.errorText = 'Access denied. Login or code are wrong. I don\'t know how ¯\\_(ツ)_/¯';
-            this.code = '';
+            this.errorOccured();
             return;
           }
           if (err.response.status === 500) {
             this.errorText = 'Internal server error :( Try again later.';
-            this.code = '';
+            this.errorOccured();
             return;
           }
 
@@ -84,6 +93,12 @@ export default {
     },
     typePassword() {
       this.passwordAvailable = this.password.length >= 8 && this.password === this.repeatPassword;
+    },
+    errorOccured() {
+      this.password = '';
+      this.repeatPassword = '';
+      this.passwordAvailable = '';
+      this.typePassword();
     },
   },
   mounted() {

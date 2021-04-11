@@ -37,11 +37,13 @@ export default {
   components: { ProgressBar },
   methods: {
     next() {
+      if (!this.codeAvailable) return;
+
       const data = {
         login: this.$store.state.restorePassword.step1.login,
         code: this.code,
       };
-      axios.get(`${backendUrl}/api/user/password/restore/check`, data)
+      axios.get(`${backendUrl}/api/user/password/restore/check?login=${data.login}&code=${data.code}`)
         .then((response) => {
           if (response.status === 200) {
             this.$store.state.restorePassword.step2 = {
@@ -56,12 +58,12 @@ export default {
         .catch((err) => {
           if (err.response.status === 403) {
             this.errorText = 'This code not available for this user!';
-            this.code = '';
+            this.errorOccured();
             return;
           }
           if (err.response.status === 500) {
             this.errorText = 'Internal server error :( Try again later.';
-            this.code = '';
+            this.errorOccured();
             return;
           }
 
@@ -77,6 +79,10 @@ export default {
     },
     typeCode() {
       this.codeAvailable = this.code.length === 6;
+    },
+    errorOccured() {
+      this.code = '';
+      this.typeCode();
     },
   },
   mounted() {
