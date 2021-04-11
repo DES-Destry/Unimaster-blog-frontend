@@ -61,6 +61,11 @@ export default {
             this.errorOccured();
             return;
           }
+          if (err.response.status === 403) {
+            this.errorText = `You can get only one code per 5 minuts! Please wait ${err.response.data.content.secondsLeft} seconds...`;
+            this.errorOccured();
+            return;
+          }
           if (err.response.status === 500) {
             this.errorText = 'Internal server error :( Try again later.';
             this.errorOccured();
